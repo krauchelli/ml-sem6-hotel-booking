@@ -236,3 +236,15 @@ The table below lists the data type for each field in the dataset after cleaning
 | email                           | Text          | object         | Same; personal info, possibly drop later    |
 | phone-number                    | Text          | object         | Not useful in modeling; identifier          |
 | credit_card                     | Text          | object         | Encoded for privacy, not usable for modeling|
+
+
+# Hipotesis yang bisa dibuat
+| Hipotesis | Dugaan                                                                 | Alasan                                                                 |
+|-----------|------------------------------------------------------------------------|------------------------------------------------------------------------|
+| H1        | Semakin besar lead_time, maka semakin tinggi kemungkinan pembatalan (`is_canceled`).  | Karena tamu lebih punya waktu untuk berubah pikiran.                   |
+| H2        | Tamu dengan deposit_type = Non Refund lebih jarang membatalkan.       | Karena tidak dapat uang kembali, tamu cenderung akan datang walau kondisi berubah. |
+| H3        | Booking melalui Online TA atau Offline TA/TO lebih tinggi kemungkinan pembatalannya dibanding Direct atau Corporate. | Agen perjalanan lebih fleksibel dan sering digunakan untuk opsi pencarian murah tanpa komitmen tinggi. |
+| H4        | Negara asal (country) tertentu punya tren pembatalan lebih tinggi.    | Misalnya tamu dari negara tertentu mungkin sering membatalkan karena jarak atau proses visa. |
+| H5        | Semakin tinggi days_in_waiting_list, semakin besar kemungkinan dibatalkan. | Tamu bisa kehilangan minat jika harus menunggu terlalu lama untuk konfirmasi. |
+| H6        | Jika seluruh fitur digunakan tanpa seleksi, model cenderung overfit dan performa di data uji bisa menurun. | Karena terlalu banyak informasi bisa membuat model mempelajari noise alih-alih pola nyata. |
+| H7        | Penggunaan fitur dengan korelasi sedang ke target + menghindari fitur redundan bisa meningkatkan kestabilan model. | Korelasi moderat cukup kuat memberi sinyal, sementara menghindari duplikasi mencegah pembelajaran berlebih. |
